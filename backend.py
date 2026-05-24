@@ -6,7 +6,7 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
 from datetime import datetime
 
-
+import os
 
 from dotenv import load_dotenv
 
@@ -26,7 +26,8 @@ def chat_node(state: ChatbotState):
     return {'messages': [response]}
 
 # ======================================= Database =====================================
-connection = sqlite3.connect(database='gravince.db', check_same_thread=False)
+DB_PATH = os.getenv("DB_PATH", "gravince.db")
+connection = sqlite3.connect(database=DB_PATH, check_same_thread=False)
 checkpointer = SqliteSaver(conn=connection)
 
 cursor = connection.cursor()
