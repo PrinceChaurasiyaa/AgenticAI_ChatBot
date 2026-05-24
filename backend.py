@@ -5,7 +5,7 @@ from langchain_core.messages import HumanMessage, BaseMessage
 from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
 from datetime import datetime
-
+from pathlib import Path
 import os
 
 from dotenv import load_dotenv
@@ -27,6 +27,7 @@ def chat_node(state: ChatbotState):
 
 # ======================================= Database =====================================
 DB_PATH = os.getenv("DB_PATH", "gravince.db")
+Path(DB_PATH).parent.mkdir(parents=True, exist_ok=True)
 connection = sqlite3.connect(database=DB_PATH, check_same_thread=False)
 checkpointer = SqliteSaver(conn=connection)
 
