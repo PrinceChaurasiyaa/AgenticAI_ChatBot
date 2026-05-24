@@ -1,4 +1,4 @@
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq
 from typing import TypedDict, Annotated
 from langgraph.graph import StateGraph, START, END
 from langchain_core.messages import HumanMessage, BaseMessage
@@ -6,11 +6,13 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
 from datetime import datetime
 
+
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-model = ChatOllama(model="llama3.1:8b", disable_streaming=False)
+model = ChatGroq(model="llama-3.3-70b-versatile", disable_streaming=False)
 
 from langgraph.graph.message import add_messages
 
