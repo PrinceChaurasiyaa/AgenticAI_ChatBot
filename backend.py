@@ -26,8 +26,8 @@ def chat_node(state: ChatbotState):
     return {'messages': [response]}
 
 # ======================================= Database =====================================
-DB_PATH = os.getenv("DB_PATH", "gravince.db")
-Path(DB_PATH).parent.mkdir(parents=True, exist_ok=True)
+DB_PATH = os.getenv("DB_PATH", "/tmp/gravince.db")       #temporary chatbot memory only
+Path(DB_PATH).parent.mkdir(parents=True, exist_ok=True)       
 connection = sqlite3.connect(database=DB_PATH, check_same_thread=False)
 checkpointer = SqliteSaver(conn=connection)
 
