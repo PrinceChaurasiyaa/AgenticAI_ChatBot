@@ -41,7 +41,7 @@ def load_conversation(thread_id):
 
 
 # ===================================== Header UI =====================================================
-st.title("GRAV!NCE", text_alignment="center")
+st.title("CHATIFY", text_alignment="center")
 st.markdown("Your Friendly Chatbot", text_alignment="center")
 
 # ===================================== Session State ===============================================
